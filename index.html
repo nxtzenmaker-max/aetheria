@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AETHERIA // Next-Gen Creative Tech & Spatial Intelligence Studio</title>
+  <meta name="description" content="Aetheria is an ultra-high performance digital experience studio engineering spatial computing, autonomous AI agents, and sub-millisecond edge architectures.">
+
+  <!-- Open Graph / Social Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nxtzenmaker-max.github.io/aetheria/">
+  <meta property="og:title" content="AETHERIA // Next-Gen Creative Tech & Spatial Intelligence Studio">
+  <meta property="og:description" content="Architecting digital realities beyond horizons. WebGL 3D core, procedural audio synthesis, and autonomous neural AI matrix.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AETHERIA // Spatial Intelligence Studio">
+  <meta name="twitter:description" content="3D WebGL visuals, procedural audio, and multi-agent AI execution simulations.">
+  <meta name="theme-color" content="#05060b">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300f0ff' stroke-width='2'><polygon points='12 2 2 7 12 12 22 7 12 2'/><polyline points='2 17 12 22 22 17'/><polyline points='2 12 12 17 22 12'/></svg>" type="image/svg+xml">
+
+  <!-- Google Fonts Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Core & Components Stylesheets -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/components.css">
+
+  <!-- Three.js CDN for 3D Cosmic Background -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+  <!-- Custom Interactive Cursor -->
+  <div id="custom-cursor" class="custom-cursor"></div>
+  <div id="custom-cursor-follower" class="custom-cursor-follower"></div>
+
+  <!-- Background Atmosphere & WebGL Canvas -->
+  <div id="webgl-canvas-container">
+    <canvas id="three-canvas"></canvas>
+  </div>
+  <div class="ambient-glow-mesh"></div>
+  <div class="grid-overlay"></div>
+
+  <!-- Main App Navigation Bar -->
+  <nav id="navbar" class="navbar">
+    <a href="#hero" class="brand-logo">
+      <div class="logo-symbol">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+          <polyline points="2 17 12 22 22 17"/>
+          <polyline points="2 12 12 17 22 12"/>
+        </svg>
+      </div>
+      <span>AETHERIA<span style="color: var(--accent-cyan); font-weight: 900;">.</span></span>
+    </a>
+
+    <ul id="nav-links" class="nav-links">
+      <li><a href="#hero" class="nav-link active">Overview</a></li>
+      <li><a href="#capabilities" class="nav-link">Capabilities</a></li>
+      <li><a href="#studio" class="nav-link">Neural Studio</a></li>
+      <li><a href="#works" class="nav-link">Featured Works</a></li>
+      <li><a href="#skills" class="nav-link">Tech Radar</a></li>
+      <li><a href="#contact" class="nav-link">Commission</a></li>
+    </ul>
+
+    <div class="nav-controls">
+      <!-- Command Palette Shortcut Button -->
+      <button id="btn-cmd-palette" class="kbd-shortcut-btn" title="Command Palette (Cmd+K)">
+        <span>Explore</span>
+        <span class="kbd-key">⌘K</span>
+      </button>
+
+      <!-- Theme Switcher -->
+      <button id="btn-theme-toggle" class="btn-icon" title="Switch Aesthetic Theme" aria-label="Switch Theme">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/>
+          <line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/>
+          <line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+      </button>
+
+      <!-- Web Audio Mute / Unmute Toggle -->
+      <button id="btn-audio-toggle" class="btn-icon" title="Toggle Sound Feedback" aria-label="Toggle Audio">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+          <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+          <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+        </svg>
+      </button>
+
+      <!-- Primary CTA -->
+      <a href="#contact" class="btn-primary" style="padding: 10px 22px; font-size: 0.88rem;">
+        <span>Initiate</span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+
+      <!-- Mobile Menu Toggle -->
+      <button id="mobile-nav-toggle" class="mobile-nav-toggle" aria-label="Open Navigation">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Main Container -->
+  <main class="app-container">
+
+    <!-- 1. Hero Section -->
+    <section id="hero" class="hero-section">
+      <div class="hero-content">
+        <div class="badge-pill">
+          <div class="pulse-dot"></div>
+          <span>Next-Gen Spatial Computing & AI Matrix • Q1 2027</span>
+        </div>
+
+        <h1 class="hero-title">
+          ARCHITECTING <br>
+          <span class="gradient-text">DIGITAL REALITIES</span> <br>
+          BEYOND HORIZONS
+        </h1>
+
+        <p class="hero-description">
+          We synthesize hyper-speed edge intelligence, spatial 3D WebGL architectures, and multi-agent autonomous swarms into breathtaking digital experiences.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#studio" class="btn-primary">
+            <span>Explore Neural Studio</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </a>
+          <a href="#capabilities" class="btn-secondary">
+            <span>Inspect Architecture</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </a>
+        </div>
+
+        <!-- Metrics Ribbon -->
+        <div class="metrics-ribbon">
+          <div class="metric-item">
+            <div class="metric-value">&lt; 4.2ms</div>
+            <div class="metric-label">P99 Edge Latency</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-value">10,000+</div>
+            <div class="metric-label">Autonomous Swarm Nodes</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-value">$1.4B+</div>
+            <div class="metric-label">DeFi Volume Routed</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-value">99.999%</div>
+            <div class="metric-label">Faultless Mesh Uptime</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="scroll-indicator">
+        <span>Scroll to Explore</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+      </div>
+    </section>
+
+    <!-- 2. System Capabilities // Bento Grid -->
+    <section id="capabilities">
+      <div class="section-header">
+        <div class="badge-pill">Capabilities & Innovations</div>
+        <h2 class="section-title">ENGINEERED FOR THE <span class="gradient-text">LIMITLESS</span></h2>
+        <p class="section-subtitle">A cohesive ecosystem of real-time spatial computing, neural synthesis, and zero-compromise distributed performance.</p>
+      </div>
+
+      <div class="bento-grid">
+        <!-- Bento 1: Planetary Telemetry (Span 7) -->
+        <div class="bento-card col-span-7">
+          <div>
+            <div class="card-header-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <h3 class="card-title">Planetary Edge Swarm Matrix</h3>
+            <p class="card-desc">Decentralized edge compute network executing neural inference and Byzantine-fault-tolerant consensus across 42 global tier-4 regions.</p>
+          </div>
+
+          <div class="telemetry-box">
+            <div class="telemetry-row">
+              <span class="telemetry-label">
+                <span class="pulse-dot" style="width: 6px; height: 6px;"></span>
+                Active Nodes
+              </span>
+              <span id="telemetry-nodes" class="telemetry-value">1,424 Online</span>
+            </div>
+            <div class="telemetry-row">
+              <span class="telemetry-label">Ingress Throughput</span>
+              <span id="telemetry-throughput" class="telemetry-value">14.82 Gbps</span>
+            </div>
+            <div class="telemetry-row">
+              <span class="telemetry-label">Consensus Block</span>
+              <span id="telemetry-block" class="telemetry-value">#1,489,202</span>
+            </div>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: 88%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bento 2: Interactive Soundboard (Span 5) -->
+        <div class="bento-card col-span-5">
+          <div>
+            <div class="card-header-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+            </div>
+            <h3 class="card-title">Spatial Sound Synthesizer</h3>
+            <p class="card-desc">Interactive Web Audio API engine. Click pads or press keys 1 through 8 to play harmonious futuristic synth chords.</p>
+          </div>
+
+          <div class="soundboard-grid">
+            <div class="synth-pad" data-note="0"><span class="synth-pad-key">[1]</span><span class="synth-pad-label">C4</span></div>
+            <div class="synth-pad" data-note="1"><span class="synth-pad-key">[2]</span><span class="synth-pad-label">D4</span></div>
+            <div class="synth-pad" data-note="2"><span class="synth-pad-key">[3]</span><span class="synth-pad-label">E4</span></div>
+            <div class="synth-pad" data-note="3"><span class="synth-pad-key">[4]</span><span class="synth-pad-label">G4</span></div>
+            <div class="synth-pad" data-note="4"><span class="synth-pad-key">[5]</span><span class="synth-pad-label">A4</span></div>
+            <div class="synth-pad" data-note="5"><span class="synth-pad-key">[6]</span><span class="synth-pad-label">C5</span></div>
+            <div class="synth-pad" data-note="6"><span class="synth-pad-key">[7]</span><span class="synth-pad-label">D5</span></div>
+            <div class="synth-pad" data-note="7"><span class="synth-pad-key">[8]</span><span class="synth-pad-label">E5</span></div>
+          </div>
+        </div>
+
+        <!-- Bento 3: Zero-Knowledge Enclaves (Span 4) -->
+        <div class="bento-card col-span-4">
+          <div class="card-header-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <h3 class="card-title">Confidential Enclaves</h3>
+          <p class="card-desc">Hardware-isolated memory enclaves (Intel SGX & AMD SEV) protecting sensitive weights with ZK-SNARK attestation proofs.</p>
+        </div>
+
+        <!-- Bento 4: Procedural WebGL / WebGPU (Span 4) -->
+        <div class="bento-card col-span-4">
+          <div class="card-header-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polygon points="2 17 12 22 22 17 12 12 2 17"/></svg>
+          </div>
+          <h3 class="card-title">Procedural WebGPU</h3>
+          <p class="card-desc">Direct GPU compute passes rendering 60FPS fluid physics, volumetric nebulae, and mathematical fractals right in client browsers.</p>
+        </div>
+
+        <!-- Bento 5: Coordinated Multi-Agent Mesh (Span 4) -->
+        <div class="bento-card col-span-4">
+          <div class="card-header-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3 class="card-title">Multi-Agent Swarm</h3>
+          <p class="card-desc">Hierarchical agent coordinators with shared vector memory, dynamic role assignment, and automated code review pipelines.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Interactive AI Neural Synthesis Studio -->
+    <section id="studio">
+      <div class="section-header">
+        <div class="badge-pill">Interactive Live Demo</div>
+        <h2 class="section-title">NEURAL SYNTHESIS <span class="gradient-text">STUDIO</span></h2>
+        <p class="section-subtitle">Test our in-browser neural code generation engine. Select presets or test inputs to stream live procedural code with real-time telemetry.</p>
+      </div>
+
+      <div class="playground-container">
+        <!-- Preset Selector Pills -->
+        <div class="preset-pills-row">
+          <button class="preset-pill active" data-preset="quantum">
+            <span>✨ Quantum Shader</span>
+          </button>
+          <button class="preset-pill" data-preset="swarm">
+            <span>⚡ Swarm Router</span>
+          </button>
+          <button class="preset-pill" data-preset="holo">
+            <span>🌐 Spatial HUD</span>
+          </button>
+          <button class="preset-pill" data-preset="zk">
+            <span>🛡️ ZK Proof Circuit</span>
+          </button>
+        </div>
+
+        <!-- Prompt Input Bar -->
+        <div class="playground-input-group">
+          <input type="text" id="playground-prompt-input" class="playground-input" placeholder="Type prompt or select a preset above..." value="Synthesize real-time Quantum Raymarching Shader with chromatic dispersion">
+          <button id="btn-run-synthesis" class="btn-primary">
+            <span>Execute Synthesis</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </button>
+        </div>
+
+        <!-- Studio Workspace (Terminal + Live Simulation Canvas) -->
+        <div class="playground-workspace">
+          <!-- Code Terminal Panel -->
+          <div class="terminal-panel">
+            <div class="terminal-topbar">
+              <div class="terminal-dots">
+                <span class="terminal-dot red"></span>
+                <span class="terminal-dot yellow"></span>
+                <span class="terminal-dot green"></span>
+              </div>
+              <span class="terminal-title">SYNTHESIS_STREAM.rs // ACTIVE</span>
+              <button id="btn-copy-code" class="btn-icon" style="width: 28px; height: 28px;" title="Copy Code">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              </button>
+            </div>
+            <pre id="playground-terminal" class="terminal-body"></pre>
+          </div>
+
+          <!-- Simulation Canvas & Telemetry Panel -->
+          <div class="simulation-canvas-panel">
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                <span style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 700;">Spatial Resonance Visualizer</span>
+                <span class="pulse-dot" style="width: 7px; height: 7px;"></span>
+              </div>
+              <canvas id="neural-sim-canvas"></canvas>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+              <div class="stat-chip">
+                <div class="stat-chip-label">Throughput</div>
+                <div id="stat-tokens" class="stat-chip-val">842.5 T/s</div>
+              </div>
+              <div class="stat-chip">
+                <div class="stat-chip-label">Latency</div>
+                <div id="stat-latency" class="stat-chip-val">3.8 ms</div>
+              </div>
+              <div class="stat-chip">
+                <div class="stat-chip-label">GPU Load</div>
+                <div id="stat-gpu" class="stat-chip-val">81%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Featured Works & Case Studies -->
+    <section id="works">
+      <div class="section-header">
+        <div class="badge-pill">Portfolio & Case Studies</div>
+        <h2 class="section-title">FLAGSHIP <span class="gradient-text">CREATIONS</span></h2>
+        <p class="section-subtitle">A curated showcase of frontier projects spanning spatial computing, distributed AI architectures, and high-frequency systems.</p>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="filter-tabs-container">
+        <button class="filter-btn active" data-filter="all">All Projects (6)</button>
+        <button class="filter-btn" data-filter="ai">Autonomous AI</button>
+        <button class="filter-btn" data-filter="spatial">Spatial 3D</button>
+        <button class="filter-btn" data-filter="fintech">FinTech & Systems</button>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="projects-grid">
+        <!-- Project 1: NEXUS -->
+        <div class="project-card" data-category="ai" data-project-id="nexus">
+          <div class="project-preview">
+            <div class="project-preview-visual" style="background: radial-gradient(circle at center, #00f0ff22, #05060b);">
+              <svg width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="#00f0ff" stroke-width="1.5">
+                <circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/>
+              </svg>
+            </div>
+            <span class="project-tag-badge">Edge AI & Rust</span>
+          </div>
+          <div class="project-body">
+            <div>
+              <h3 class="project-title">NEXUS // Planetary Edge AI Matrix</h3>
+              <p class="project-desc">Sub-millisecond edge neural routing matrix running inside zero-knowledge confidential hardware enclaves.</p>
+            </div>
+            <div class="project-meta-row">
+              <span class="project-metric-pill">&lt; 4.2ms P99 Latency</span>
+              <span class="project-view-link">
+                <span>Case Study</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: HOLO -->
+        <div class="project-card" data-category="spatial" data-project-id="holo">
+          <div class="project-preview">
+            <div class="project-preview-visual" style="background: radial-gradient(circle at center, #8a2be222, #05060b);">
+              <svg width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="#8a2be2" stroke-width="1.5">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>
+              </svg>
+            </div>
+            <span class="project-tag-badge">Spatial 3D & GLSL</span>
+          </div>
+          <div class="project-body">
+            <div>
+              <h3 class="project-title">HOLO // Spatial 3D Volumetric HUD</h3>
+              <p class="project-desc">In-browser holographic canvas engineered with Three.js, custom raymarching GLSL shaders, and audio-reactive physics.</p>
+            </div>
+            <div class="project-meta-row">
+              <span class="project-metric-pill">120 FPS Fluid Render</span>
+              <span class="project-view-link">
+                <span>Case Study</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3: AETHER VAULT -->
+        <div class="project-card" data-category="fintech" data-project-id="aether-vault">
+          <div class="project-preview">
+            <div class="project-preview-visual" style="background: radial-gradient(circle at center, #ffb70322, #05060b);">
+              <svg width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="#ffb703" stroke-width="1.5">
+                <path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+              </svg>
+            </div>
+            <span class="project-tag-badge">Institutional DeFi</span>
+          </div>
+          <div class="project-body">
+            <div>
+              <h3 class="project-title">AETHER VAULT // DeFi Liquidity Matrix</h3>
+              <p class="project-desc">High-frequency algorithmic liquidity router handling $1.4B+ in daily volume with zero-slippage MEV mitigation.</p>
+            </div>
+            <div class="project-meta-row">
+              <span class="project-metric-pill">$1.4B+ Daily Ingress</span>
+              <span class="project-view-link">
+                <span>Case Study</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4: HYPERION -->
+        <div class="project-card" data-category="ai" data-project-id="hyperion">
+          <div class="project-preview">
+            <div class="project-preview-visual" style="background: radial-gradient(circle at center, #00f5a022, #05060b);">
+              <svg width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="#00f5a0" stroke-width="1.5">
+                <circle cx="12" cy="12" r="3"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="5" r="2"/><circle cx="19" cy="19" r="2"/><circle cx="5" cy="19" r="2"/>
+                <line x1="7" y1="6" x2="10" y2="10"/><line x1="17" y1="6" x2="14" y2="10"/><line x1="7" y1="18" x2="10" y2="14"/><line x1="17" y1="18" x2="14" y2="14"/>
+              </svg>
+            </div>
+            <span class="project-tag-badge">Multi-Agent Swarm</span>
+          </div>
+          <div class="project-body">
+            <div>
+              <h3 class="project-title">HYPERION // 10k Autonomous Agents</h3>
+              <p class="project-desc">Self-orchestrating multi-agent system solving complex distributed software engineering with shared vector memories.</p>
+            </div>
+            <div class="project-meta-row">
+              <span class="project-metric-pill">10,000+ Concurrent Nodes</span>
+              <span class="project-view-link">
+                <span>Case Study</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 5: PRISM -->
+        <div class="project-card" data-category="spatial" data-project-id="prism">
+          <div class="project-preview">
+            <div class="project-preview-visual" style="background: radial-gradient(circle at center, #ff007f22, #05060b);">
+              <svg width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="#ff007f" stroke-width="1.5">
+                <polygon points="12 2 22 22 2 22 12 2"/>
+              </svg>
+            </div>
+            <span class="project-tag-badge">WebGPU & Shaders</span>
+          </div>
+          <div class="project-body">
+            <div>
+              <h3 class="project-title">PRISM // Generative Visual Engine</h3>
+              <p class="project-desc">Hardware-accelerated generative visual canvas rendering cinema-grade particle graphics synced to live MIDI triggers.</p>
+            </div>
+            <div class="project-meta-row">
+              <span class="project-metric-pill">4K Ultra-Res Output</span>
+              <span class="project-view-link">
+                <span>Case Study</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 6: ORBITAL -->
+        <div class="project-card" data-category="fintech" data-project-id="orbital">
+          <div class="project-preview">
+            <div class="project-preview-visual" style="background: radial-gradient(circle at center, #00f0ff22, #05060b);">
+              <svg width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="#00f0ff" stroke-width="1.5">
+                <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(30 12 12)"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </div>
+            <span class="project-tag-badge">Aerospace & GIS</span>
+          </div>
+          <div class="project-body">
+            <div>
+              <h3 class="project-title">ORBITAL // Aerospace GIS Radar</h3>
+              <p class="project-desc">Real-time satellite constellation ephemeris tracking 8,000+ orbital objects with 3D collision risk predictions.</p>
+            </div>
+            <div class="project-meta-row">
+              <span class="project-metric-pill">8,000+ Live Ephemeris</span>
+              <span class="project-view-link">
+                <span>Case Study</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Skills & Tech Radar Matrix -->
+    <section id="skills">
+      <div class="section-header">
+        <div class="badge-pill">Technical Ecosystem</div>
+        <h2 class="section-title">THE ENGINEERING <span class="gradient-text">RADAR</span></h2>
+        <p class="section-subtitle">Deep proficiency across low-latency systems, graphics programming, spatial audio, and neural AI infrastructure.</p>
+      </div>
+
+      <div class="skills-container">
+        <!-- Category 1 -->
+        <div class="skill-category-card">
+          <h3 class="skill-category-title">
+            <span style="color: var(--accent-cyan);">💎</span>
+            Spatial 3D & Graphics
+          </h3>
+          <div class="skill-list">
+            <div>
+              <div class="skill-item-info"><span>WebGL & Three.js</span><span>98%</span></div>
+              <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 98%;"></div></div>
+            </div>
+            <div>
+              <div class="skill-item-info"><span>WebGPU Compute & WGSL</span><span>92%</span></div>
+              <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 92%;"></div></div>
+            </div>
+            <div>
+              <div class="skill-item-info"><span>GLSL Custom Raymarching</span><span>95%</span></div>
+              <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 95%;"></div></div>
+            </div>
+            <div>
+              <div class="skill-item-info"><span>Web Audio Synthesizers</span><span>94%</span></div>
+              <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 94%;"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category 2 -->
+        <div class="skill-category-card">
+          <h3 class="skill-category-title">
+            <span style="color: var(--accent-purple);">🧠</span>
+            Autonomous AI & LLMs
+          </h3>
+          <div class="skill-list">
+            <div>
+              <div class="skill-item-info"><span>Multi-Agent Swarms</span><span>96%</span></div>
+              <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 96%;"></div></div>
+            </div>
+            <div>
+              <div class="skill-item-info"><span>Vector DBs (Qdrant/Pinecone)</span><span>93%</span></div>
+              <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 93%;"></div></div>
+            </div>
+            <div>
+              <div class="skill-item-info"><span>Low-Latency Token Streaming</span><span>97%</span></div>
+              <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 97%;"></div></div>
+            </div>
+            <div>
+              <div class="skill-item-info"><span>Fine-Tuning & Quantization</span><span>89%</span></div>
+              <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 89%;"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category 3 -->
+        <div class="skill-category-card">
+          <h3 class="skill-category-title">
+            <span style="color: var(--accent-emerald);">⚡</span>
+            Systems & Edge Compute
+          </h3>
+          <div class="skill-list">
+            <div>
+              <div class="skill-item-info"><span>Rust & WebAssembly</span><span>96%</span></div>
+              <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 96%;"></div></div>
+            </div>
+            <div>
+              <div class="skill-item-info"><span>Distributed Go & gRPC</span><span>94%</span></div>
+              <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 94%;"></div></div>
+            </div>
+            <div>
+              <div class="skill-item-info"><span>Hardware Enclaves (SGX/SEV)</span><span>88%</span></div>
+              <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 88%;"></div></div>
+            </div>
+            <div>
+              <div class="skill-item-info"><span>Zero-Knowledge Proofs (ZK)</span><span>86%</span></div>
+              <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 86%;"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Client Praise Marquee -->
+    <section>
+      <div class="section-header" style="margin-bottom: 36px;">
+        <div class="badge-pill">Global Endorsements</div>
+        <h2 class="section-title">PRAISE FROM <span class="gradient-text">INNOVATORS</span></h2>
+      </div>
+
+      <div class="marquee-container">
+        <div class="marquee-track">
+          <!-- Card 1 -->
+          <div class="testimonial-card">
+            <p class="testimonial-quote">"Aetheria revolutionized our spatial data visualizer. Rendering millions of telemetry coordinates at 120 FPS in-browser was deemed impossible until their team stepped in."</p>
+            <div class="client-profile">
+              <div class="client-avatar">SK</div>
+              <div>
+                <div class="client-name">Dr. Sophia Korolev</div>
+                <div class="client-role">VP of Aerospace Systems, StarSync</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="testimonial-card">
+            <p class="testimonial-quote">"The multi-agent swarm architecture built by Aetheria cut our model review latency by 82% while guaranteeing cryptographic verification on every step."</p>
+            <div class="client-profile">
+              <div class="client-avatar">MV</div>
+              <div>
+                <div class="client-name">Marcus Vance</div>
+                <div class="client-role">Founder & CEO, Synthetix AI</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="testimonial-card">
+            <p class="testimonial-quote">"Their mastery of Three.js, Web Audio, and precision UI interactions created the most talked-about product launch in our venture firm's history."</p>
+            <div class="client-profile">
+              <div class="client-avatar">EL</div>
+              <div>
+                <div class="client-name">Elena Lindqvist</div>
+                <div class="client-role">Chief Design Officer, Aetherium Labs</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4 (Duplicate for seamless loop) -->
+          <div class="testimonial-card">
+            <p class="testimonial-quote">"Sub-4ms edge routing in hardware enclaves without compromising client UX. Unbelievable craftsmanship and attention to artistic detail."</p>
+            <div class="client-profile">
+              <div class="client-avatar">TX</div>
+              <div>
+                <div class="client-name">Tariq Xenon</div>
+                <div class="client-role">Head of Infrastructure, Protocol 9</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Interactive Commission & Contact Deck -->
+    <section id="contact">
+      <div class="section-header">
+        <div class="badge-pill">Start a Collaboration</div>
+        <h2 class="section-title">COMMISSION A <span class="gradient-text">MASTERPIECE</span></h2>
+        <p class="section-subtitle">Have a vision that demands breathtaking visuals and flawless engineering? Let's engineer the future together.</p>
+      </div>
+
+      <div class="contact-deck">
+        <form id="contact-form">
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="contact-name">Your Name / Organization *</label>
+              <input type="text" id="contact-name" class="form-input" placeholder="e.g. Elena Rostova / Neural Core Inc." required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contact-email">Corporate Email *</label>
+              <input type="email" id="contact-email" class="form-input" placeholder="elena@neuralcore.io" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="project-type">Project Scope</label>
+              <select id="project-type" class="form-select">
+                <option value="spatial">Spatial 3D / WebGL Experience</option>
+                <option value="agent">Autonomous AI Agent Swarm</option>
+                <option value="systems">High-Concurrency Edge & FinTech</option>
+                <option value="enterprise">End-to-End Flagship Platform</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="target-timeline">Desired Delivery Horizon</label>
+              <select id="target-timeline" class="form-select">
+                <option value="q1">Q1 2027 (Rapid Sprint - 4-6 weeks)</option>
+                <option value="q2">Q2 2027 (Flagship Build - 8-12 weeks)</option>
+                <option value="strategic">Long-Term Strategic Retainer</option>
+              </select>
+            </div>
+
+            <!-- Dynamic Budget Range Slider -->
+            <div class="form-group full-width budget-slider-container">
+              <div class="budget-display">
+                <label class="form-label">Estimated Allocation / Budget:</label>
+                <span id="budget-val-display" class="budget-val">$45,000 USD</span>
+              </div>
+              <input type="range" id="budget-slider" class="range-slider" min="15000" max="150000" step="5000" value="45000">
+            </div>
+
+            <div class="form-group full-width">
+              <label class="form-label" for="project-vision">Project Vision & Goals</label>
+              <textarea id="project-vision" class="form-textarea" rows="4" placeholder="Briefly articulate your vision, key requirements, or technical challenges..."></textarea>
+            </div>
+          </div>
+
+          <div style="text-align: center; margin-top: 10px;">
+            <button type="submit" class="btn-primary" style="padding: 16px 48px; font-size: 1.05rem;">
+              <span>Transmit Mission Brief</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="app-container">
+      <div class="footer-top">
+        <div>
+          <a href="#hero" class="brand-logo">
+            <div class="logo-symbol">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                <polyline points="2 17 12 22 22 17"/>
+                <polyline points="2 12 12 17 22 12"/>
+              </svg>
+            </div>
+            <span>AETHERIA<span style="color: var(--accent-cyan);">.</span></span>
+          </a>
+          <p class="footer-brand-desc">
+            Pioneering the intersection of spatial computing, autonomous AI agents, and sub-millisecond edge architecture.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#hero">Overview</a></li>
+            <li><a href="#capabilities">Capabilities</a></li>
+            <li><a href="#studio">Neural Studio</a></li>
+            <li><a href="#works">Featured Works</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Ecosystem</h4>
+          <ul class="footer-links">
+            <li><a href="#skills">Tech Radar</a></li>
+            <li><a href="#contact">Commission Deck</a></li>
+            <li><a href="https://github.com/nxtzenmaker-max/aetheria" target="_blank" rel="noopener">GitHub Matrix</a></li>
+            <li><a href="https://twitter.com" target="_blank" rel="noopener">X // Research</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">System Status</h4>
+          <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 14px;">
+            <div style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; font-weight: 600; color: var(--accent-emerald);">
+              <span class="pulse-dot"></span>
+              All 42 Global Regions Operational
+            </div>
+            <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); margin-top: 6px;">
+              P99 Latency: 3.8ms • Zero Packet Loss
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026-2027 AETHERIA STUDIO. Engineered with precision. MIT License.</div>
+        <div style="display: flex; gap: 20px;">
+          <a href="#" style="color: var(--text-muted); text-decoration: none;">Security Architecture</a>
+          <a href="#" style="color: var(--text-muted); text-decoration: none;">Privacy Attestation</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Command Palette Modal (Cmd+K) -->
+  <div id="cmd-palette-backdrop" class="cmd-palette-backdrop">
+    <div class="cmd-palette">
+      <div class="cmd-search-box">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="cmd-search-input" class="cmd-search-input" placeholder="Type a command or jump to section (e.g. studio, theme, audio)...">
+        <span class="kbd-key">ESC</span>
+      </div>
+      <ul id="cmd-list" class="cmd-list"></ul>
+    </div>
+  </div>
+
+  <!-- Case Study Lightbox Modal -->
+  <div id="project-modal" class="modal-backdrop">
+    <div class="modal-content">
+      <button id="modal-close-btn" class="modal-close-btn" aria-label="Close Modal">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <div style="margin-bottom: 24px;">
+        <span id="modal-tag" class="badge-pill" style="margin-bottom: 12px;">Tag</span>
+        <h2 id="modal-title" style="font-family: var(--font-display); font-size: 1.85rem; font-weight: 800; margin-bottom: 12px;">Project Title</h2>
+        <p id="modal-desc" style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6;"></p>
+      </div>
+
+      <div style="margin-bottom: 28px;">
+        <h4 style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px;">Key Telemetry & Impact</h4>
+        <div id="modal-metrics" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;"></div>
+      </div>
+
+      <div style="margin-bottom: 28px;">
+        <h4 style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">Architecture Specifications</h4>
+        <p id="modal-specs" style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; background: rgba(0,0,0,0.3); padding: 16px; border-radius: 8px; border: 1px solid var(--border-subtle);"></p>
+      </div>
+
+      <div>
+        <h4 style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px;">Tech Stack</h4>
+        <div id="modal-stack" style="display: flex; flex-wrap: wrap; gap: 8px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/three-scene.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/playground.js"></script>
+  <script src="js/palette.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
